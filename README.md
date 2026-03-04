@@ -1,4 +1,4 @@
-# 🎵 Club de Vinilos - Sistema de Gestión
+# Club de Vinilos - Sistema de Gestión
 
 Plataforma web dinámica desarrollada en Java para la administración de un catálogo de vinilos y la gestión de accesos, estructurada bajo el patrón de arquitectura MVC.
 
@@ -20,7 +20,7 @@ El proyecto mantiene una estricta separación de responsabilidades:
 * **Persistencia (`cl.club.vinilos.dao`):** Clases que encapsulan la lógica SQL y la conexión transaccional a la base de datos.
 * **Vistas (`src/main/webapp`):** Archivos JSP que renderizan la interfaz mediante etiquetas lógicas JSTL.
 
-## ⚙️ Configuración y Despliegue
+## Configuración y Despliegue
 
 ### 1. Preparación de la Base de Datos
 Ejecutar el siguiente script en el motor MariaDB para crear el esquema y cargar los datos de prueba:
