@@ -4,21 +4,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Acceso - Club de Vinilos</title>
+    <title>Login - Club de Vinilos</title>
 </head>
 <body>
-    <h1>Ingreso de Socios</h1>
-    <c:if test="${param.error == '1'}">
-        <p style="color:red; font-weight:bold;">Credenciales incorrectas.</p>
+    <h1>Acceso al Club</h1>
+    
+    <c:if test="${not empty error}">
+        <p style="color:red"><c:out value="${error}"/></p>
     </c:if>
-    <form action="login" method="POST">
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
-        
-        <label>Contraseña:</label><br>
-        <input type="password" name="password" required><br><br>
-        
-        <button type="submit">Ingresar</button>
+
+    <form action="login" method="post">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Entrar</button></td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

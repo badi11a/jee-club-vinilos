@@ -4,29 +4,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Vinilo</title>
+    <title>Formulario Vinilo</title>
 </head>
 <body>
-    <h1><c:out value="${empty vinilo ? 'Registrar Nuevo Vinilo' : 'Editar Vinilo'}" /></h1>
-    <form action="vinilos" method="POST">
+    <h1><c:out value="${vinilo != null ? 'Editar' : 'Registrar'}" /> Vinilo</h1>
+    
+    <form action="vinilos" method="post">
+        <input type="hidden" name="idVinilo" value="${vinilo.idVinilo}">
         
-        <input type="hidden" name="id" value="<c:out value='${vinilo.id}'/>">
-        
-        <label>Título del Disco:</label><br>
-        <input type="text" name="titulo" value="<c:out value='${vinilo.titulo}'/>" required><br><br>
-        
-        <label>Artista o Banda:</label><br>
-        <input type="text" name="artista" value="<c:out value='${vinilo.artista}'/>" required><br><br>
-        
-        <label>Año de Lanzamiento:</label><br>
-        <input type="number" name="anio_lanzamiento" value="<c:out value='${vinilo.anioLanzamiento}'/>" required><br><br>
-        
-        <label>Género Musical:</label><br>
-        <input type="text" name="genero" value="<c:out value='${vinilo.genero}'/>" required><br><br>
-        
-        <button type="submit">Guardar</button>
+        <table border="0" cellpadding="5">
+            <tr>
+                <td><label for="titulo">Título:</label></td>
+                <td><input type="text" id="titulo" name="titulo" value="${vinilo.titulo}" required></td>
+            </tr>
+            <tr>
+                <td><label for="artista">Artista:</label></td>
+                <td><input type="text" id="artista" name="artista" value="${vinilo.artista}" required></td>
+            </tr>
+            <tr>
+                <td><label for="anioLanzamiento">Año:</label></td>
+                <td><input type="number" id="anioLanzamiento" name="anioLanzamiento" value="${vinilo.anioLanzamiento}" required></td>
+            </tr>
+            <tr>
+                <td><label for="genero">Género:</label></td>
+                <td><input type="text" id="genero" name="genero" value="${vinilo.genero}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Guardar</button>
+                    <a href="vinilos">Cancelar</a>
+                </td>
+            </tr>
+        </table>
     </form>
-    <br>
-    <a href="vinilos">Volver al Catálogo</a>
 </body>
 </html>

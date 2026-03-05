@@ -1,23 +1,15 @@
 package cl.club.vinilos.modelo;
 
 public class Socio {
-    private int id;
+    private int idSocio;
     private String nombre;
     private String email;
     private String password;
 
     public Socio() {}
 
-    public Socio(int id, String nombre, String email, String password) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-    }
-
-    // Getters y Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getIdSocio() { return idSocio; }
+    public void setIdSocio(int idSocio) { this.idSocio = idSocio; }
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getEmail() { return email; }

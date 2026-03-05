@@ -1,30 +1,38 @@
 package cl.club.vinilos.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConexionBD {
-    
-    private static final String URL = "jdbc:mariadb://localhost:3306/club_vinilos";
-    private static final String USER = ""; 
-    private static final String PASSWORD = ""; 
-    
- 
-    public static Connection obtenerConexion() {
-        Connection conexion = null;
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-            
-        } catch (ClassNotFoundException e) {
-            System.err.println("Error: No se encontró el driver de MariaDB. ¿Está en el pom.xml?");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("Error al conectar a la base de datos. Verifique credenciales o si el servicio está iniciado.");
+    private static final Properties props = new Properties();
+
+    static {
+        try (InputStream input = ConexionBD.class.getClassLoader().getResourceAsStream("db.properties")) {
+            if (input == null) {
+                System.err.println("Error: No se encontró el archivo db.properties");
+            } else {
+                props.load(input);
+                Class.forName("org.mariadb.jdbc.Driver");
+            }
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return conexion;
+    }
+
+    public static Connection obtenerConexion() {
+        try {
+            return DriverManager.getConnection(
+                props.getProperty("db.url"),
+                props.getProperty("db.user"),
+                props.getProperty("db.password")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

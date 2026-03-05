@@ -1,3 +1,19 @@
+# Compilados y artefactos de construcción
 target/
-.vscode/
 *.class
+
+# Entorno de Desarrollo (IDE)
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+.idea/
+*.iml
+
+# Configuración Sensible (Seguridad)
+src/main/resources/db.properties
+
+# Archivos de Sistema
+.DS_Store
+Thumbs.db
