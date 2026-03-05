@@ -43,12 +43,15 @@ public class ViniloServlet extends HttpServlet {
         String artista = request.getParameter("artista");
         int anio = Integer.parseInt(request.getParameter("anioLanzamiento"));
         String genero = request.getParameter("genero");
+        String disponibleString = request.getParameter("disponible");
+        boolean disponible = (disponibleString == null) || Boolean.parseBoolean(disponibleString);
 
         Vinilo v = new Vinilo();
         v.setTitulo(titulo);
         v.setArtista(artista);
         v.setAnioLanzamiento(anio);
         v.setGenero(genero);
+        v.setDisponible(disponible);
 
         if (idStr == null || idStr.isEmpty()) {
             viniloDAO.agregar(v);

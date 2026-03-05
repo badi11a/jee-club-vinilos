@@ -29,6 +29,7 @@
                 <td><label for="genero">Género:</label></td>
                 <td><input type="text" id="genero" name="genero" value="${vinilo.genero}"></td>
             </tr>
+            <input type="hidden" name="disponible" value="${vinilo.idVinilo != null ? vinilo.disponible : true}">
             <tr>
                 <td></td>
                 <td>
